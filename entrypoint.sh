@@ -53,6 +53,9 @@ if [ ! -f /etc/glance/.complete ];then
     
     $CRUDINI --set /etc/glance/glance-api.conf DEFAULT notification_driver noop
     
+    $CRUDINI --set /etc/glance/glance-api.conf DEFAULT enable_v1_api False
+    $CRUDINI --set /etc/glance/glance-api.conf DEFAULT enable_v2_api True
+
     touch /etc/glance/.complete
 fi
 
