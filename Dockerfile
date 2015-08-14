@@ -20,6 +20,10 @@ RUN cp -rp /etc/glance/ /glance
 RUN rm -rf /etc/glance/*
 RUN rm -rf /var/log/glance/*
 
+RUN mv /glance/schema-image.json /glance/schema-image.json.orig
+RUN curl http://git.openstack.org/cgit/openstack/glance/plain/etc/schema-image.json?h=stable/kilo \
+         -o /glance/schema-image.json
+
 VOLUME ["/etc/glance"]
 VOLUME ["/var/log/glance"]
 VOLUME ["/var/lib/glance/images/"]
