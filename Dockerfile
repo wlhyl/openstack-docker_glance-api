@@ -11,7 +11,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
 RUN apt-get dist-upgrade -y
-RUN apt-get -t jessie-backports install glance-api -y
+RUN apt-get -t jessie-backports install glance-api curl -y
 RUN apt-get clean
 
 RUN env --unset=DEBIAN_FRONTEND
