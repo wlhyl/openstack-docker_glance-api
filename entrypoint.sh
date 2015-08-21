@@ -53,7 +53,7 @@ if [ ! -f /etc/glance/.complete ];then
     $CRUDINI --del /etc/glance/glance-api.conf glance_store filesystem_store_datadirs
     
     $CRUDINI --set /etc/glance/glance-api.conf glance_store stores glance.store.filesystem.Store,glance.store.rbd.Store
-    $CRUDINI --set /etc/glance/glance-api.conf glance_store rbd_store_ceph_conf /etc/glance/ceph.conf
+    $CRUDINI --set /etc/glance/glance-api.conf glance_store rbd_store_ceph_conf /etc/ceph/ceph.conf
     $CRUDINI --set /etc/glance/glance-api.conf glance_store rbd_store_pool images
     $CRUDINI --set /etc/glance/glance-api.conf glance_store rbd_store_user glance
     $CRUDINI --set /etc/glance/glance-api.conf glance_store rbd_store_chunk_size 8
