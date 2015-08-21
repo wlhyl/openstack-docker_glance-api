@@ -12,6 +12,7 @@
 - /etc/ceph: /etc/ceph
 
 # 启动glance
+```bash
 docker run -d --name glance-api -p 9292:9292 \
     -v /opt/openstack/glance/:/etc/glance/ \
     -v /opt/openstack/log/glance/:/var/log/glance/ \
@@ -24,3 +25,10 @@ docker run -d --name glance-api -p 9292:9292 \
     -e GLANCE_PASS=glance \
     --entrypoint=/bin/bash \
     10.64.0.50:5000/lzh/glance:kilo
+```
+#使用ceph作backend
+编辑/etc/glance/glance-api.conf
+```bash
+[glance_store]
+default_store = file
+```
