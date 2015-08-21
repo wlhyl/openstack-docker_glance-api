@@ -47,10 +47,19 @@ if [ ! -f /etc/glance/.complete ];then
     
     $CRUDINI --set /etc/glance/glance-api.conf paste_deploy flavor keystone
     
+    #如果使用ceph作backend，设置default_store rbd
     $CRUDINI --set /etc/glance/glance-api.conf glance_store default_store file
     $CRUDINI --set /etc/glance/glance-api.conf glance_store filesystem_store_datadir /var/lib/glance/images/
     $CRUDINI --del /etc/glance/glance-api.conf glance_store filesystem_store_datadirs
     
+    $CRUDINI --set /etc/glance/glance-api.conf glance_store stores glance.store.filesystem.Store,glance.store.rbd.Store
+    $CRUDINI --set /etc/glance/glance-api.conf glance_store rbd_store_ceph_conf /etc/glance/ceph.conf
+    $CRUDINI --set /etc/glance/glance-api.conf glance_store rbd_store_pool images
+    $CRUDINI --set /etc/glance/glance-api.conf glance_store rbd_store_user glance
+    $CRUDINI --set /etc/glance/glance-api.conf glance_store rbd_store_chunk_size 8
+    
+    $CRUDINI --set /etc/glance/glance-api.conf DEFAULT show_image_direct_url True
+
     $CRUDINI --set /etc/glance/glance-api.conf DEFAULT notification_driver noop
     
     $CRUDINI --set /etc/glance/glance-api.conf DEFAULT enable_v1_api True

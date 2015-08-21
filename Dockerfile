@@ -11,7 +11,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
 RUN apt-get dist-upgrade -y
-RUN apt-get -t jessie-backports install glance-api curl python-rbd -y
+RUN apt-get -t jessie-backports install glance-api curl python-ceph -y
 RUN apt-get clean
 
 RUN env --unset=DEBIAN_FRONTEND
@@ -27,6 +27,7 @@ RUN curl http://git.openstack.org/cgit/openstack/glance/plain/etc/schema-image.j
 VOLUME ["/etc/glance"]
 VOLUME ["/var/log/glance"]
 VOLUME ["/var/lib/glance/images/"]
+VOLUME ["/etc/ceph/"]
 
 ADD entrypoint.sh /usr/bin/entrypoint.sh
 RUN chmod +x /usr/bin/entrypoint.sh
