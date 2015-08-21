@@ -9,12 +9,14 @@
 - /opt/openstack/glance/: /etc/glance/
 - /opt/openstack/log/glance/: /var/log/glance/
 - /opt/openstack/images/: /var/lib/glance/images/
+- /etc/ceph: /etc/ceph
 
 # 启动glance
 docker run -d --name glance-api -p 9292:9292 \
     -v /opt/openstack/glance/:/etc/glance/ \
     -v /opt/openstack/log/glance/:/var/log/glance/ \
     -v /opt/openstack/images/:/var/lib/glance/images/ \
+    -v /etc/ceph:/etc/ceph \
     -e GLANCE_DB=10.64.0.52 \
     -e GLANCE_DBPASS=123456 \
     -e KEYSTONE_INTERNAL_ENDPOINT=10.64.0.52 \
