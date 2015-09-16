@@ -9,10 +9,7 @@ ENV OPENSTACK_VERSION kilo
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update
-RUN apt-get dist-upgrade -y
-RUN apt-get glance-api python-ceph -y
-RUN apt-get clean
+RUN apt-get update && apt-get dist-upgrade -y && apt-get install glance-api python-ceph -y && apt-get clean
 
 RUN env --unset=DEBIAN_FRONTEND
 
