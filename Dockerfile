@@ -11,7 +11,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
 RUN apt-get dist-upgrade -y
-RUN apt-get -t jessie-backports install glance-api curl python-ceph -y
+RUN apt-get glance-api python-ceph -y
 RUN apt-get clean
 
 RUN env --unset=DEBIAN_FRONTEND
@@ -19,10 +19,6 @@ RUN env --unset=DEBIAN_FRONTEND
 RUN cp -rp /etc/glance/ /glance
 RUN rm -rf /etc/glance/*
 RUN rm -rf /var/log/glance/*
-
-RUN mv /glance/schema-image.json /glance/schema-image.json.orig
-RUN curl http://git.openstack.org/cgit/openstack/glance/plain/etc/schema-image.json?h=stable/kilo \
-         -o /glance/schema-image.json
 
 VOLUME ["/etc/glance"]
 VOLUME ["/var/log/glance"]
