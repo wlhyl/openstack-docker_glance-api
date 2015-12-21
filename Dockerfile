@@ -1,5 +1,5 @@
 # image name lzh/glance-api:liberty
-FROM registry.lzh.site:5000/lzh/openstackbase:liberty
+FROM 10.64.0.50:5000/lzh/openstackbase:liberty
 
 MAINTAINER Zuhui Liu penguin_tux@live.com
 
