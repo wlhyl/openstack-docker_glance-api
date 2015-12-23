@@ -46,7 +46,7 @@ if [ ! -f /etc/glance/.complete ];then
     $CRUDINI --set /etc/glance/glance-api.conf keystone_authtoken password $GLANCE_PASS
     
     $CRUDINI --set /etc/glance/glance-api.conf paste_deploy flavor keystone
-    $CRUDINI --set /etc/glance/glance-registry.conf paste_deploy config_file /usr/share/glance/glance-api-dist-paste.ini
+    $CRUDINI --set /etc/glance/glance-api.conf paste_deploy config_file /usr/share/glance/glance-api-dist-paste.ini
     
     #如果使用ceph作backend，设置default_store rbd
     $CRUDINI --set /etc/glance/glance-api.conf glance_store default_store file
