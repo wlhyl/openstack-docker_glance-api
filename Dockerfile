@@ -3,17 +3,17 @@ FROM 10.64.0.50:5000/lzh/openstackbase:liberty
 
 MAINTAINER Zuhui Liu penguin_tux@live.com
 
-ENV BASE_VERSION 2015-12-21
+ENV BASE_VERSION 2015-12-28
 ENV OPENSTACK_VERSION liberty
+ENV BUID_VERSION 2015-12-28
 
-RUN yum update -y
-RUN yum install -y openstack-glance python-glance python-glanceclient
-RUN yum clean all
-RUN rm -rf /var/cache/yum/*
+RUN yum update -y && \
+         yum install -y openstack-glance python-glance python-glanceclient && \
+         rm -rf /var/cache/yum/*
 
-RUN cp -rp /etc/glance/ /glance
-RUN rm -rf /etc/glance/*
-RUN rm -rf /var/log/glance/*
+RUN cp -rp /etc/glance/ /glance && \
+         rm -rf /etc/glance/* && \
+         rm -rf /var/log/glance/*
 
 VOLUME ["/etc/glance"]
 VOLUME ["/var/log/glance"]
