@@ -26,10 +26,3 @@ docker run -d --name glance-api -p 9292:9292 \
     --entrypoint=/bin/bash \
     10.64.0.50:5000/lzh/glance:kilo
 ```
-
-# 使用ceph作backend
-编辑/etc/glance/glance-api.conf
-```bash
-[glance_store]
-default_store = file
-```
